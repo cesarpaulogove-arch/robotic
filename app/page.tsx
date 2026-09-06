@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -20,153 +19,347 @@ export default function Home() {
   const [contactOpen, setContactOpen] = useState(false);
 
   return (
-    <main className="min-h-screen bg-[#001124] text-white flex flex-col justify-between p-4 font-sans select-none overflow-x-hidden">
+    <main className="min-h-[100dvh] bg-black px-3 py-3 sm:px-4 sm:py-4 font-sans overflow-x-hidden">
 
-      {/* LOGOTIPO */}
-      <section className="w-full flex flex-col items-center text-center pt-4 pb-2">
-        <div className="relative flex items-center justify-center text-7xl font-black tracking-tighter bg-gradient-to-r from-[#00bfff] via-[#00f2fe] to-[#4facfe] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(0,191,255,0.3)]">
-          WS
+      {/* ANIMAÇÃO DOS PONTOS CIRCULARES NAS BORDAS — somente efeito visual */}
+      <style jsx>{`
+        @keyframes borderDotTravel {
+          0% {
+            left: 2%;
+            top: 2%;
+          }
+          25% {
+            left: 98%;
+            top: 2%;
+          }
+          50% {
+            left: 98%;
+            top: 98%;
+          }
+          75% {
+            left: 2%;
+            top: 98%;
+          }
+          100% {
+            left: 2%;
+            top: 2%;
+          }
+        }
 
-          <div className="absolute -right-7 top-1/2 -translate-y-1/2 flex flex-col items-center bg-[#012246] border border-cyan-400 rounded-md px-1 py-0.5 shadow-[0_0_8px_rgba(34,211,238,0.4)]">
-            <span className="text-[9px] font-black tracking-widest text-cyan-400 leading-none">
-              AI
-            </span>
-          </div>
+        .border-travel-dot {
+          position: absolute;
+          width: 7px;
+          height: 7px;
+          border-radius: 9999px;
+          background: #22d3ee;
+          box-shadow:
+            0 0 5px #22d3ee,
+            0 0 12px rgba(34, 211, 238, 0.95),
+            0 0 22px rgba(34, 211, 238, 0.65);
+          transform: translate(-50%, -50%);
+          pointer-events: none;
+          z-index: 30;
+          animation: borderDotTravel 5s linear infinite;
+        }
+
+        .border-travel-dot.second {
+          animation-delay: -2.5s;
+        }
+      `}</style>
+
+      {/* =====================================================
+          MOLDURA EXTERNA
+      ===================================================== */}
+      <div className="mx-auto w-full max-w-md border-[5px] border-[#10243b] p-[6px]">
+
+        {/* =====================================================
+            MOLDURA INTERNA — ENVOLVE TODA A INFORMAÇÃO
+        ===================================================== */}
+        <div className="min-h-[calc(100dvh-38px)] border-[3px] border-gray-200 bg-[#001124] px-3 py-3 flex flex-col">
+
+          {/* =================================================
+              LOGOTIPO
+          ================================================= */}
+          <section className="w-full flex flex-col items-center text-center pt-0 pb-3 shrink-0">
+
+            {/* WS + AI + CODE */}
+            <div className="relative flex items-center justify-center">
+
+              {/* WS */}
+              <span className="text-[60px] sm:text-[68px] font-black tracking-[-0.08em] leading-none bg-gradient-to-r from-[#00bfff] via-[#00f2fe] to-[#4facfe] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(0,191,255,0.25)]">
+                WS
+              </span>
+
+              {/* AI + CODE */}
+              <div className="flex flex-col items-start ml-1">
+
+                {/* AI */}
+                <div className="self-start ml-1 bg-[#012246] border border-cyan-400 rounded-full px-1.5 py-[1px] shadow-[0_0_8px_rgba(34,211,238,0.5)]">
+                  <span className="text-[7px] font-black tracking-widest text-cyan-300 leading-none">
+                    AI
+                  </span>
+                </div>
+
+                {/* CODE */}
+                <span className="text-[27px] sm:text-[31px] font-black tracking-[0.13em] text-white leading-none">
+                  CODE
+                </span>
+
+              </div>
+            </div>
+
+            {/* SEPARADOR VISUAL */}
+            <div className="w-40 h-7 bg-black mt-1.5 mb-1.5" />
+
+            {/* SLOGAN */}
+            <p className="text-[10px] sm:text-[11px] font-black text-cyan-400 uppercase tracking-wider leading-tight">
+              Soluções Integradas:
+            </p>
+
+            <p className="text-xs sm:text-sm text-gray-200 mt-1 leading-tight">
+              Do Circuito à Inteligência Artificial
+            </p>
+
+          </section>
+
+          {/* =================================================
+              SERVIÇOS
+          ================================================= */}
+          <section className="w-full max-w-sm mx-auto flex flex-col gap-2.5 my-auto">
+
+            {/* =================================================
+                HARDWARE
+            ================================================= */}
+            <div className="relative overflow-hidden bg-gradient-to-b from-[#032247] to-[#011630] border border-[#1361ab] rounded-xl p-3 flex gap-3 shadow-md">
+              {/* PONTOS CIRCULARES PERCORRENDO A BORDA — efeito visual */}
+              <span className="border-travel-dot" aria-hidden="true" />
+              <span className="border-travel-dot second" aria-hidden="true" />
+
+
+              {/* ÍCONE */}
+              <div className="bg-[#042e5c] h-11 w-11 rounded-lg border border-cyan-500/30 text-cyan-400 shrink-0 flex items-center justify-center">
+                <Cpu className="w-6 h-6" />
+              </div>
+
+              {/* CONTEÚDO */}
+              <div className="flex-1 min-w-0">
+
+                <h2 className="text-sm sm:text-base font-black tracking-wide text-white uppercase mb-1 leading-tight">
+                  Hardware & Automação
+                </h2>
+
+                <ul className="text-[11px] sm:text-xs font-medium text-gray-300 space-y-0.5 leading-relaxed list-disc list-inside">
+                  <li>Desenho e Montagem de Circuitos</li>
+                  <li>Protótipos e Sistemas de Automação</li>
+                </ul>
+
+              </div>
+            </div>
+
+            {/* =================================================
+                SOFTWARE
+            ================================================= */}
+            <div className="relative overflow-hidden bg-gradient-to-b from-[#032247] to-[#011630] border border-[#1361ab] rounded-xl p-3 flex gap-3 shadow-md">
+              {/* PONTOS CIRCULARES PERCORRENDO A BORDA — efeito visual */}
+              <span className="border-travel-dot" aria-hidden="true" />
+              <span className="border-travel-dot second" aria-hidden="true" />
+
+
+              {/* ÍCONE */}
+              <div className="bg-[#042e5c] h-11 w-11 rounded-lg border border-cyan-500/30 text-cyan-400 shrink-0 flex items-center justify-center">
+                <Laptop className="w-6 h-6" />
+              </div>
+
+              {/* CONTEÚDO */}
+              <div className="flex-1 min-w-0">
+
+                <h2 className="text-sm sm:text-base font-black tracking-wide text-white uppercase mb-1 leading-tight">
+                  Software & IA
+                </h2>
+
+                <ul className="text-[11px] sm:text-xs font-medium text-gray-300 space-y-0.5 leading-relaxed list-disc list-inside">
+                  <li>Programação e Websites</li>
+                  <li>Integração de IA em Protótipos</li>
+                </ul>
+
+              </div>
+            </div>
+
+            {/* =================================================
+                CONSULTORIA
+            ================================================= */}
+            <div className="relative overflow-hidden bg-gradient-to-b from-[#032247] to-[#011630] border border-[#1361ab] rounded-xl p-3 flex gap-3 shadow-md">
+              {/* PONTOS CIRCULARES PERCORRENDO A BORDA — efeito visual */}
+              <span className="border-travel-dot" aria-hidden="true" />
+              <span className="border-travel-dot second" aria-hidden="true" />
+
+
+              {/* ÍCONE */}
+              <div className="bg-[#042e5c] h-11 w-11 rounded-lg border border-cyan-500/30 shrink-0 flex flex-col items-center justify-center">
+
+                <Lightbulb className="w-4 h-4 text-yellow-400" />
+
+                <Handshake className="w-4 h-4 text-cyan-400" />
+
+              </div>
+
+              {/* CONTEÚDO */}
+              <div className="flex-1 min-w-0">
+
+                <h2 className="text-sm sm:text-base font-black tracking-wide text-white uppercase mb-1 leading-tight">
+                  Consultoria & Suporte
+                </h2>
+
+                <ul className="text-[11px] sm:text-xs font-medium text-gray-300 space-y-0.5 leading-relaxed list-disc list-inside">
+                  <li>Consultoria Técnica</li>
+                  <li>Assistência Especializada</li>
+                </ul>
+
+              </div>
+            </div>
+
+          </section>
+
+          {/* =================================================
+              RODAPÉ
+          ================================================= */}
+          <footer className="w-full max-w-sm mx-auto mt-3 pb-0 flex flex-col gap-2.5 shrink-0">
+
+            {/* LINHA SEPARADORA */}
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent" />
+
+            {/* =================================================
+                VER PROJETOS
+            ================================================= */}
+            <Link
+              href="/menu_principal"
+              className="w-full bg-gradient-to-r from-[#00bfff] to-[#4facfe] text-[#001124] font-black py-3 px-4 flex items-center justify-between rounded-xl shadow-[0_4px_15px_rgba(6,182,212,0.25)] active:scale-[0.97] transition"
+            >
+
+              <div className="flex items-center gap-2.5 min-w-0">
+
+                <FolderGit2 className="w-5 h-5 shrink-0 stroke-[2.5]" />
+
+                <span className="text-sm sm:text-base tracking-wide">
+                  Ver nossos projetos
+                </span>
+
+              </div>
+
+              <ArrowRight className="w-5 h-5 shrink-0 stroke-[2.5]" />
+
+            </Link>
+
+            {/* =================================================
+                SOBRE NÓS
+            ================================================= */}
+            <section className="relative overflow-hidden bg-gradient-to-b from-[#032247] to-[#011630] border border-[#1361ab] rounded-xl p-4 shadow-md">
+
+              {/* PONTOS CIRCULARES PERCORRENDO A BORDA — efeito visual */}
+              <span className="border-travel-dot" aria-hidden="true" />
+              <span className="border-travel-dot second" aria-hidden="true" />
+
+              <div className="relative z-10">
+                <h2 className="text-sm sm:text-base font-black tracking-wide text-cyan-400 uppercase mb-2 leading-tight">
+                  Sobre Nós
+                </h2>
+
+                <p className="text-[11px] sm:text-xs font-medium text-gray-300 leading-relaxed">
+                  Somos uma iniciativa tecnológica independente, formada por profissionais freelancers apaixonados por eletrónica, programação, automação e desenvolvimento de soluções inteligentes.
+
+                  Atuamos desde o desenho e montagem de circuitos eletrónicos, soldagem e montagem de protótipos físicos, até ao desenvolvimento de firmware para microcontroladores e sistemas embarcados.
+
+                  Trabalhamos com plataformas como Arduino, ESP8266, ESP32 e outras famílias de ESP, além de circuitos integrados e diferentes componentes eletrónicos, desenvolvendo soluções personalizadas de acordo com cada projeto.
+
+                  Também desenvolvemos aplicações web integradas a microcontroladores, permitindo criar sistemas capazes de comunicar, monitorizar e controlar dispositivos remotamente.
+
+                  Atualmente, temos trabalhado principalmente com estudantes, apoiando projetos académicos, protótipos, trabalhos de conclusão e experiências práticas na área de eletrónica, programação e tecnologia.
+
+                  A nossa proposta é aproximar a teoria da prática, ajudando a transformar uma ideia, um circuito ou um código em um protótipo funcional e uma solução real.
+                </p>
+
+                <div className="mt-3 grid grid-cols-3 gap-1.5 text-center">
+                  <div className="rounded-lg border border-cyan-500/20 bg-[#011a32] px-1.5 py-2">
+                    <span className="block text-[9px] sm:text-[10px] font-black text-cyan-400 uppercase">
+                      Hardware
+                    </span>
+                  </div>
+                  <div className="rounded-lg border border-cyan-500/20 bg-[#011a32] px-1.5 py-2">
+                    <span className="block text-[9px] sm:text-[10px] font-black text-cyan-400 uppercase">
+                      Software & IA
+                    </span>
+                  </div>
+                  <div className="rounded-lg border border-cyan-500/20 bg-[#011a32] px-1.5 py-2">
+                    <span className="block text-[9px] sm:text-[10px] font-black text-cyan-400 uppercase">
+                      Consultoria
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* =================================================
+                CONTACTO
+            ================================================= */}
+            <button
+              type="button"
+              onClick={() => setContactOpen(true)}
+              className="w-full bg-[#001833] hover:bg-[#00224a] text-cyan-400 border border-cyan-500/40 font-bold py-3 px-4 flex items-center justify-center gap-2.5 rounded-xl active:scale-[0.97] transition-all"
+            >
+
+              <MessageSquareCode className="w-5 h-5 shrink-0 text-cyan-400" />
+
+              <span className="text-sm sm:text-base tracking-wide">
+                Entrar em contacto
+              </span>
+
+            </button>
+
+            {/* =================================================
+                CONTACTOS
+            ================================================= */}
+            <div className="grid grid-cols-2 gap-2">
+
+              {/* TELEFONE */}
+              <a
+                href="tel:+258847059112"
+                className="min-w-0 flex items-center justify-center gap-1.5 bg-[#011a32] border border-cyan-500/20 rounded-xl py-2.5 px-2 text-[10px] sm:text-xs font-bold text-gray-300 hover:text-cyan-400 transition"
+              >
+
+                <Phone className="w-4 h-4 shrink-0 text-cyan-400" />
+
+                <span className="truncate">
+                  +258 84 705 9112
+                </span>
+
+              </a>
+
+              {/* WHATSAPP */}
+              <a
+                href="https://wa.me/258847059112"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-1.5 bg-[#011a32] border border-cyan-500/20 rounded-xl py-2.5 px-2 text-[10px] sm:text-xs font-bold text-gray-300 hover:text-cyan-400 transition"
+              >
+
+                <MessageCircle className="w-4 h-4 shrink-0 text-cyan-400" />
+
+                <span>
+                  WhatsApp
+                </span>
+
+              </a>
+
+            </div>
+
+          </footer>
+
         </div>
+      </div>
 
-        <h1 className="text-3xl font-black tracking-widest text-white mt-0.5">
-          WSCODE
-        </h1>
-
-        <p className="text-xs font-bold text-cyan-400 max-w-[280px] mt-2 uppercase tracking-wider leading-relaxed">
-          Soluções Integradas:
-          <br />
-          <span className="text-gray-300 font-medium normal-case text-sm block mt-0.5">
-            Do Circuito à Inteligência Artificial
-          </span>
-        </p>
-      </section>
-
-      {/* SERVIÇOS */}
-      <section className="w-full flex flex-col gap-3.5 my-auto max-w-sm mx-auto">
-
-        {/* HARDWARE */}
-        <div className="relative overflow-hidden bg-gradient-to-b from-[#032247] to-[#011630] border-2 border-[#1361ab] rounded-xl p-4 flex gap-3.5 shadow-md">
-          <div className="bg-[#042e5c] p-2.5 h-11 w-11 rounded-lg border border-cyan-500/30 text-cyan-400 shrink-0 flex items-center justify-center">
-            <Cpu className="w-6 h-6" />
-          </div>
-
-          <div className="flex-1 min-w-0">
-            <h2 className="text-base font-black tracking-wide text-white uppercase mb-1 truncate">
-              Hardware & Automação
-            </h2>
-
-            <ul className="text-xs font-medium text-gray-300 space-y-1 list-disc list-inside">
-              <li>Desenho e Montagem de Circuitos</li>
-              <li>Protótipos e Sistemas de Automação</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* SOFTWARE */}
-        <div className="relative overflow-hidden bg-gradient-to-b from-[#032247] to-[#011630] border-2 border-[#1361ab] rounded-xl p-4 flex gap-3.5 shadow-md">
-          <div className="bg-[#042e5c] p-2.5 h-11 w-11 rounded-lg border border-cyan-500/30 text-cyan-400 shrink-0 flex items-center justify-center">
-            <Laptop className="w-6 h-6" />
-          </div>
-
-          <div className="flex-1 min-w-0">
-            <h2 className="text-base font-black tracking-wide text-white uppercase mb-1 truncate">
-              Software & IA
-            </h2>
-
-            <ul className="text-xs font-medium text-gray-300 space-y-1 list-disc list-inside">
-              <li>Programação e Websites</li>
-              <li>Integração de IA em Protótipos</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* CONSULTORIA */}
-        <div className="relative overflow-hidden bg-gradient-to-b from-[#032247] to-[#011630] border-2 border-[#1361ab] rounded-xl p-4 flex gap-3.5 shadow-md">
-          <div className="bg-[#042e5c] p-2.5 h-11 w-11 rounded-lg border border-cyan-500/30 text-cyan-400 shrink-0 flex flex-col items-center justify-center gap-0.5">
-            <Lightbulb className="w-4 h-4 text-yellow-400" />
-            <Handshake className="w-4 h-4 text-cyan-400" />
-          </div>
-
-          <div className="flex-1 min-w-0">
-            <h2 className="text-base font-black tracking-wide text-white uppercase mb-1 truncate">
-              Consultoria & Suporte
-            </h2>
-
-            <ul className="text-xs font-medium text-gray-300 space-y-1 list-disc list-inside">
-              <li>Consultoria Técnica</li>
-              <li>Assistência Especializada</li>
-            </ul>
-          </div>
-        </div>
-
-      </section>
-
-      {/* RODAPÉ */}
-      <footer className="w-full max-w-sm mx-auto mt-4 pb-2 flex flex-col gap-3">
-
-        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent mb-1" />
-
-        {/* PROJETOS */}
-        <Link
-          href="/menu_principal"
-          className="w-full bg-gradient-to-r from-[#00bfff] to-[#4facfe] text-[#001124] font-black py-3.5 px-5 flex items-center justify-between rounded-xl shadow-[0_4px_15px_rgba(6,182,212,0.25)] active:scale-[0.97] transition"
-        >
-          <div className="flex items-center gap-3">
-            <FolderGit2 className="w-5 h-5 stroke-[2.5]" />
-
-            <span className="text-base tracking-wide">
-              Ver nossos projetos
-            </span>
-          </div>
-
-          <ArrowRight className="w-5 h-5 stroke-[2.5]" />
-        </Link>
-
-        {/* CONTACTO */}
-        <button
-          type="button"
-          onClick={() => setContactOpen(true)}
-          className="w-full bg-[#001833]/60 hover:bg-[#00224a] text-cyan-400 border-2 border-cyan-500/40 font-bold py-3.5 px-5 flex items-center justify-center gap-3 rounded-xl active:scale-[0.97] transition-all"
-        >
-          <MessageSquareCode className="w-5 h-5 text-cyan-400" />
-
-          <span className="text-base tracking-wide">
-            Entrar em contacto
-          </span>
-        </button>
-
-        {/* CONTACTOS VISÍVEIS */}
-        <div className="grid grid-cols-2 gap-2 pt-1">
-
-          <a
-            href="tel:+258847059112"
-            className="flex items-center justify-center gap-2 bg-[#011a32] border border-cyan-500/20 rounded-xl py-3 text-xs font-bold text-gray-300 hover:text-cyan-400 transition"
-          >
-            <Phone className="w-4 h-4 text-cyan-400" />
-            <span>+258 84 705 9112</span>
-          </a>
-
-          <a
-            href="https://wa.me/258847059112"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 bg-[#011a32] border border-cyan-500/20 rounded-xl py-3 text-xs font-bold text-gray-300 hover:text-cyan-400 transition"
-          >
-            <MessageCircle className="w-4 h-4 text-cyan-400" />
-            <span>WhatsApp</span>
-          </a>
-
-        </div>
-
-      </footer>
-
-      {/* MODAL DE CONTACTO */}
+      {/* =====================================================
+          MODAL DE CONTACTO
+      ===================================================== */}
       {contactOpen && (
         <ContactForm
           onClose={() => setContactOpen(false)}
@@ -176,4 +369,3 @@ export default function Home() {
     </main>
   );
 }
-
