@@ -1,16 +1,15 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import React, { useState, useEffect } from "react";
 
 export type TelaAtiva =
-  | 'robo'
-  | 'semaforo'
-  | 'parque'
-  | 'circuitos'
-  | 'irrigacao'
-  | 'jogos'
-  | 'electricidade';
+  | "robo"
+  | "semaforo"
+  | "parque"
+  | "circuitos"
+  | "irrigacao"
+  | "jogos"
+  | "electricidade";
 
 interface CodeDashboardProps {
   setModuloAtivo: (tela: TelaAtiva) => void;
@@ -22,136 +21,145 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
   moduloAtivo,
 }) => {
   const techList = [
-    'NEXT.JS',
-    'PYTHON',
-    'JS',
-    'C++',
-    'UNITY HUB',
+    "NEXT.JS",
+    "PYTHON",
+    "JS",
+    "C++",
+    "UNITY HUB",
   ];
 
   const codeTemplates = [
     {
-      tech: 'NEXT.JS',
+      tech: "NEXT.JS",
       lines: [
         "import { useState } from 'react';",
-        '',
-        'export default function Dashboard() {',
-        '  const [status, setStatus] = useState(true);',
-        '',
-        '  const executarSistema = () => {',
+        "",
+        "export default function Dashboard() {",
+        "  const [status, setStatus] = useState(true);",
+        "",
+        "  const executarSistema = () => {",
         "    setStatus(!status);",
-        '  };',
-        '',
-        '  return (',
+        "  };",
+        "",
+        "  return (",
         '    <main className="dashboard">',
-        '      <h1>Sistema Online</h1>',
-        '      <button onClick={executarSistema}>',
-        '        Executar',
-        '      </button>',
-        '    </main>',
-        '  );',
-        '}',
+        "      <h1>Sistema Online</h1>",
+        "      <button onClick={executarSistema}>",
+        "        Executar",
+        "      </button>",
+        "    </main>",
+        "  );",
+        "}",
       ],
     },
+
     {
-      tech: 'PYTHON',
+      tech: "PYTHON",
       lines: [
-        'import wscode_intelligence',
-        'import system_control',
-        '',
-        'def executar_sistema():',
-        '    sistema = wscode_intelligence.connect()',
-        '    status = sistema.check_status()',
-        '',
+        "import wscode_intelligence",
+        "import system_control",
+        "",
+        "def executar_sistema():",
+        "    sistema = wscode_intelligence.connect()",
+        "    status = sistema.check_status()",
+        "",
         '    if status == "ONLINE":',
         '        print("Sistema operacional")',
-        '        system_control.execute()',
-        '    else:',
+        "        system_control.execute()",
+        "    else:",
         '        print("Aguardando conexão...")',
-        '',
-        'while True:',
-        '    executar_sistema()',
+        "",
+        "while True:",
+        "    executar_sistema()",
       ],
     },
+
     {
-      tech: 'JS',
+      tech: "JS",
       lines: [
-        'const system = {',
+        "const system = {",
         '  status: "ONLINE",',
-        '  temperature: 24,',
-        '  voltage: 220,',
-        '};',
-        '',
-        'function runDiagnostics() {',
+        "  temperature: 24,",
+        "  voltage: 220,",
+        "};",
+        "",
+        "function runDiagnostics() {",
         '  console.log("Running diagnostics...");',
-        '',
+        "",
         '  if (system.status === "ONLINE") {',
         '    return "SYSTEM READY";',
-        '  }',
-        '',
+        "  }",
+        "",
         '  return "SYSTEM ERROR";',
-        '}',
-        '',
-        'runDiagnostics();',
+        "}",
+        "",
+        "runDiagnostics();",
       ],
     },
+
     {
-      tech: 'C++',
+      tech: "C++",
       lines: [
-        '#include <iostream>',
-        '#include <vector>',
-        '',
-        'using namespace std;',
-        '',
-        'int main() {',
-        '    vector<int> sensors;',
-        '',
-        '    for (int i = 0; i < 10; i++) {',
-        '        sensors.push_back(i);',
-        '    }',
-        '',
+        "#include <iostream>",
+        "#include <vector>",
+        "",
+        "using namespace std;",
+        "",
+        "int main() {",
+        "    vector<int> sensors;",
+        "",
+        "    for (int i = 0; i < 10; i++) {",
+        "        sensors.push_back(i);",
+        "    }",
+        "",
         '    cout << "Sensors online";',
-        '    return 0;',
-        '}',
+        "    return 0;",
+        "}",
       ],
     },
+
     {
-      tech: 'UNITY HUB',
+      tech: "UNITY HUB",
       lines: [
-        'using UnityEngine;',
-        '',
-        'public class SystemController : MonoBehaviour',
-        '{',
-        '    public float systemSpeed = 5f;',
-        '    private bool systemActive = true;',
-        '',
-        '    void Start()',
-        '    {',
+        "using UnityEngine;",
+        "",
+        "public class SystemController : MonoBehaviour",
+        "{",
+        "    public float systemSpeed = 5f;",
+        "    private bool systemActive = true;",
+        "",
+        "    void Start()",
+        "    {",
         '        Debug.Log("Unity System Ready");',
-        '    }',
-        '',
-        '    void Update()',
-        '    {',
-        '        if (systemActive)',
-        '        {',
-        '            ExecuteSystem();',
-        '        }',
-        '    }',
-        '',
-        '    void ExecuteSystem()',
-        '    {',
-        '        transform.Rotate(Vector3.up * systemSpeed * Time.deltaTime);',
-        '    }',
-        '}',
+        "    }",
+        "",
+        "    void Update()",
+        "    {",
+        "        if (systemActive)",
+        "        {",
+        "            ExecuteSystem();",
+        "        }",
+        "    }",
+        "",
+        "    void ExecuteSystem()",
+        "    {",
+        "        transform.Rotate(Vector3.up * systemSpeed * Time.deltaTime);",
+        "    }",
+        "}",
       ],
     },
   ];
 
   const [currentTechIndex, setCurrentTechIndex] = useState(0);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
-  const [currentText, setCurrentText] = useState('');
+  const [currentText, setCurrentText] = useState("");
   const [displayedLines, setDisplayedLines] = useState<string[]>([]);
 
+  /*
+   * ============================================================
+   * GERAÇÃO CONTÍNUA DO CÓDIGO
+   * ============================================================
+   */
   useEffect(() => {
     const currentTemplate = codeTemplates[currentTechIndex];
 
@@ -162,8 +170,9 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
         setCurrentTechIndex(
           (prev) => (prev + 1) % codeTemplates.length
         );
+
         setCurrentLineIndex(0);
-        setCurrentText('');
+        setCurrentText("");
         setDisplayedLines([]);
       }, 2500);
 
@@ -174,7 +183,9 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
 
     if (currentText.length < line.length) {
       const timeout = setTimeout(() => {
-        setCurrentText(line.slice(0, currentText.length + 1));
+        setCurrentText(
+          line.slice(0, currentText.length + 1)
+        );
       }, 10);
 
       return () => clearTimeout(timeout);
@@ -183,43 +194,52 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
     const timeout = setTimeout(() => {
       setDisplayedLines((prev) => [...prev, line]);
       setCurrentLineIndex((prev) => prev + 1);
-      setCurrentText('');
+      setCurrentText("");
     }, 80);
 
     return () => clearTimeout(timeout);
-  }, [currentLineIndex, currentText, currentTechIndex]);
+  }, [
+    currentLineIndex,
+    currentText,
+    currentTechIndex,
+  ]);
 
+  /*
+   * ============================================================
+   * MÓDULOS
+   * ============================================================
+   */
   const botoesNavegacao: {
     label: string;
     target: TelaAtiva;
   }[] = [
     {
-      label: 'MÓDULO ROBÔ',
-      target: 'robo',
+      label: "MÓDULO ROBÔ",
+      target: "robo",
     },
     {
-      label: 'SEMÁFOROS',
-      target: 'semaforo',
+      label: "SEMÁFOROS",
+      target: "semaforo",
     },
     {
-      label: 'PARQUE',
-      target: 'parque',
+      label: "PARQUE",
+      target: "parque",
     },
     {
-      label: 'CIRCUITOS',
-      target: 'circuitos',
+      label: "CIRCUITOS",
+      target: "circuitos",
     },
     {
-      label: 'IRRIGAÇÃO',
-      target: 'irrigacao',
+      label: "IRRIGAÇÃO",
+      target: "irrigacao",
     },
     {
-      label: 'JOGOS',
-      target: 'jogos',
+      label: "JOGOS",
+      target: "jogos",
     },
     {
-      label: 'ELECTRICIDADE',
-      target: 'electricidade',
+      label: "ELECTRICIDADE",
+      target: "electricidade",
     },
   ];
 
@@ -228,28 +248,36 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
   return (
     <div
       className="
-        flex flex-col
+        flex
+        flex-col
         min-h-[100dvh]
         w-full
         bg-slate-900
-        p-2 sm:p-3 md:p-4
+        p-2
+        sm:p-3
+        md:p-4
         select-none
-        justify-start
         box-border
-        gap-2 sm:gap-3
-        overflow-x-hidden
+        gap-2
+        sm:gap-3
+        overflow-hidden
       "
     >
-      {/* HEADER */}
+
+      {/* ========================================================
+          HEADER
+      ======================================================== */}
       <header
         className="
           w-full
           shrink-0
           rounded-xl
-          border border-teal-400/30
+          border
+          border-teal-400/30
           bg-slate-800/70
           backdrop-blur-md
-          shadow-lg shadow-teal-950/20
+          shadow-lg
+          shadow-teal-950/20
           overflow-hidden
         "
       >
@@ -259,66 +287,73 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
             items-center
             justify-between
             gap-3
-            px-3 py-3
-            sm:px-4 sm:py-3
-            md:px-5 md:py-4
+            px-3
+            py-3
+            sm:px-4
+            sm:py-3
+            md:px-5
+            md:py-4
             bg-gradient-to-r
             from-slate-800
             via-slate-800/80
             to-slate-700/60
           "
         >
-          {/* LOGO / TITLE */}
-          <div className="min-w-0">
-            <div className="flex items-center gap-2">
-              <div
+          {/* LOGO */}
+          <div className="flex items-center gap-2 min-w-0">
+
+            <div
+              className="
+                flex
+                h-8
+                w-8
+                sm:h-9
+                sm:w-9
+                md:h-10
+                md:w-10
+                shrink-0
+                items-center
+                justify-center
+                rounded-lg
+                border
+                border-teal-300/40
+                bg-teal-500/10
+                text-teal-300
+              "
+            >
+              <span className="text-sm sm:text-base md:text-lg">
+                {"</>"}
+              </span>
+            </div>
+
+            <div className="min-w-0">
+
+              <h1
                 className="
-                  flex
-                  h-8 w-8
-                  sm:h-9 sm:w-9
-                  md:h-10 md:w-10
-                  shrink-0
-                  items-center
-                  justify-center
-                  rounded-lg
-                  border border-teal-300/40
-                  bg-teal-500/10
-                  text-teal-300
-                  shadow-md shadow-teal-950/20
+                  truncate
+                  text-sm
+                  sm:text-base
+                  md:text-lg
+                  font-bold
+                  tracking-wide
+                  text-white
                 "
               >
-                <span className="text-sm sm:text-base md:text-lg">
-                  {'</>'}
-                </span>
-              </div>
+                CODE DASHBOARD
+              </h1>
 
-              <div className="min-w-0">
-                <h1
-                  className="
-                    truncate
-                    text-sm
-                    sm:text-base
-                    md:text-lg
-                    font-bold
-                    tracking-wide
-                    text-white
-                  "
-                >
-                  CODE DASHBOARD
-                </h1>
+              <p
+                className="
+                  truncate
+                  text-[9px]
+                  sm:text-[10px]
+                  md:text-xs
+                  text-teal-300/80
+                "
+              >
+                WSCODE INTELLIGENCE SYSTEM
+              </p>
 
-                <p
-                  className="
-                    truncate
-                    text-[9px]
-                    sm:text-[10px]
-                    md:text-xs
-                    text-teal-300/80
-                  "
-                >
-                  WSCODE INTELLIGENCE SYSTEM
-                </p>
-              </div>
             </div>
           </div>
 
@@ -330,16 +365,20 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
               items-center
               gap-1.5
               rounded-full
-              border border-emerald-400/30
+              border
+              border-emerald-400/30
               bg-emerald-400/10
-              px-2 py-1
+              px-2
+              py-1
               sm:px-3
             "
           >
             <span
               className="
-                h-1.5 w-1.5
-                sm:h-2 sm:w-2
+                h-1.5
+                w-1.5
+                sm:h-2
+                sm:w-2
                 rounded-full
                 bg-emerald-400
                 shadow-[0_0_8px_rgba(52,211,153,0.8)]
@@ -363,40 +402,48 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
         </div>
       </header>
 
-      {/* MAIN */}
-      <div
+      {/* ========================================================
+          CONTEÚDO PRINCIPAL
+      ======================================================== */}
+      <main
         className="
-          w-full
-          flex-1
           flex
+          flex-1
+          min-h-0
+          w-full
           flex-col
-          p-2 sm:p-3 md:p-4
-          border border-teal-400/20
           rounded-xl
+          border
+          border-teal-400/20
           bg-slate-800/30
-          min-w-0
+          p-2
+          sm:p-3
+          md:p-4
           overflow-hidden
-          shadow-inner
-          shadow-slate-950/10
         "
       >
-        {/* TOP AREA */}
+
+        {/* ======================================================
+            IDENTIDADE + TECNOLOGIAS
+        ====================================================== */}
         <div
           className="
+            shrink-0
             flex
             flex-col
             lg:flex-row
-            gap-3
-            lg:gap-4
-            min-w-0
+            gap-2
+            sm:gap-3
           "
         >
-          {/* IDENTITY */}
+
+          {/* IDENTIDADE */}
           <section
             className="
               shrink-0
               rounded-xl
-              border border-teal-400/20
+              border
+              border-teal-400/20
               bg-slate-700/30
               p-3
               sm:p-4
@@ -404,27 +451,33 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
               xl:w-[250px]
             "
           >
+
             <div className="flex items-center gap-3">
+
               <div
                 className="
                   flex
-                  h-11 w-11
-                  sm:h-12 sm:w-12
+                  h-11
+                  w-11
+                  sm:h-12
+                  sm:w-12
                   shrink-0
                   items-center
                   justify-center
                   rounded-xl
-                  border border-cyan-400/30
+                  border
+                  border-cyan-400/30
                   bg-cyan-400/10
                   text-cyan-300
                 "
               >
                 <span className="text-xl">
-                  {'{ }'}
+                  {"{ }"}
                 </span>
               </div>
 
               <div className="min-w-0">
+
                 <p
                   className="
                     text-[9px]
@@ -450,6 +503,7 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
                 >
                   PROGRAMMING
                 </h2>
+
               </div>
             </div>
 
@@ -477,20 +531,23 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
               Ambiente de desenvolvimento
               e monitorização dos sistemas.
             </p>
+
           </section>
 
-          {/* TECHNOLOGIES */}
+          {/* TECNOLOGIAS */}
           <section
             className="
               min-w-0
               flex-1
               rounded-xl
-              border border-teal-400/20
+              border
+              border-teal-400/20
               bg-slate-700/20
               p-3
               sm:p-4
             "
           >
+
             <div
               className="
                 mb-2
@@ -500,6 +557,7 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
                 gap-2
               "
             >
+
               <span
                 className="
                   text-[9px]
@@ -515,9 +573,11 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
               <span
                 className="
                   rounded-md
-                  border border-teal-400/20
+                  border
+                  border-teal-400/20
                   bg-teal-400/5
-                  px-2 py-1
+                  px-2
+                  py-1
                   text-[8px]
                   sm:text-[9px]
                   font-mono
@@ -526,9 +586,9 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
               >
                 {currentTech}
               </span>
+
             </div>
 
-            {/* MOBILE SCROLL */}
             <div
               className="
                 flex
@@ -538,12 +598,14 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
                 scrollbar-thin
                 scrollbar-thumb-teal-500/30
                 scrollbar-track-transparent
-                lg:overflow-visible
                 lg:flex-wrap
+                lg:overflow-visible
               "
             >
               {techList.map((tech, index) => {
-                const active = index === currentTechIndex;
+
+                const active =
+                  index === currentTechIndex;
 
                 return (
                   <button
@@ -552,22 +614,24 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
                     onClick={() => {
                       setCurrentTechIndex(index);
                       setCurrentLineIndex(0);
-                      setCurrentText('');
+                      setCurrentText("");
                       setDisplayedLines([]);
                     }}
                     className={`
                       shrink-0
                       rounded-lg
                       border
-                      px-3 py-2
+                      px-3
+                      py-2
                       sm:px-4
-                      transition-all
-                      duration-200
                       text-[9px]
                       sm:text-[10px]
                       md:text-[11px]
                       font-bold
                       tracking-wider
+                      transition-all
+                      duration-200
+
                       ${
                         active
                           ? `
@@ -593,22 +657,28 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
                 );
               })}
             </div>
+
           </section>
+
         </div>
 
-        {/* NAVIGATION */}
+        {/* ======================================================
+            MÓDULOS
+        ====================================================== */}
         <section
           className="
-            mt-3
-            sm:mt-4
+            mt-2
+            sm:mt-3
             shrink-0
             rounded-xl
-            border border-teal-400/20
+            border
+            border-teal-400/20
             bg-slate-700/20
             p-2
             sm:p-3
           "
         >
+
           <div
             className="
               flex
@@ -624,8 +694,11 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
               lg:overflow-visible
             "
           >
+
             {botoesNavegacao.map((botao) => {
-              const ativo = moduloAtivo === botao.target;
+
+              const ativo =
+                moduloAtivo === botao.target;
 
               return (
                 <button
@@ -635,8 +708,8 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
                     setModuloAtivo(botao.target)
                   }
                   className={`
-                    group
                     relative
+                    group
                     shrink-0
                     min-w-[125px]
                     sm:min-w-[145px]
@@ -648,6 +721,7 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
                     sm:py-3
                     transition-all
                     duration-200
+
                     ${
                       ativo
                         ? `
@@ -668,6 +742,7 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
                     }
                   `}
                 >
+
                   <span
                     className="
                       block
@@ -696,30 +771,58 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
                       "
                     />
                   )}
+
                 </button>
               );
             })}
+
           </div>
+
         </section>
 
-        {/* TERMINAL */}
-        <section
+        {/* ======================================================
+            ESPAÇO CENTRAL
+            Aqui ficam os módulos selecionados.
+        ====================================================== */}
+        <div
           className="
-            mt-3
-            sm:mt-4
             flex-1
             min-h-0
-            min-w-0
-            flex
-            flex-col
+            mt-2
+            sm:mt-3
+            overflow-hidden
+          "
+        >
+          {/* 
+            Os componentes dos módulos podem ocupar esta área.
+
+            Exemplo:
+            {moduloAtivo === "robo" && <ComponenteRobo />}
+            {moduloAtivo === "semaforo" && <ComponenteSemaforo />}
+            etc.
+          */}
+        </div>
+
+        {/* ======================================================
+            GERAÇÃO CONTÍNUA DE CÓDIGO
+            >>> SEMPRE NO FUNDO <<<
+        ====================================================== */}
+        <section
+          className="
+            shrink-0
+            h-[220px]
+            sm:h-[240px]
+            md:h-[260px]
             rounded-xl
-            border border-teal-400/20
+            border
+            border-teal-400/20
             bg-[#082536]/80
             overflow-hidden
             shadow-lg
             shadow-slate-950/20
           "
         >
+
           {/* TERMINAL HEADER */}
           <div
             className="
@@ -736,11 +839,17 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
               sm:px-4
             "
           >
+
             <div className="flex items-center gap-2">
+
               <div className="flex gap-1">
+
                 <span className="h-2 w-2 rounded-full bg-red-400/70" />
+
                 <span className="h-2 w-2 rounded-full bg-yellow-400/70" />
+
                 <span className="h-2 w-2 rounded-full bg-emerald-400/70" />
+
               </div>
 
               <span
@@ -751,14 +860,16 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
                   text-slate-300
                 "
               >
-                terminal
+                continuous-code-generator
               </span>
+
             </div>
 
             <span
               className="
                 rounded-md
-                border border-teal-400/20
+                border
+                border-teal-400/20
                 bg-teal-400/5
                 px-2
                 py-1
@@ -770,14 +881,14 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
             >
               {currentTech}
             </span>
+
           </div>
 
           {/* TERMINAL BODY */}
           <div
             className="
-              flex-1
+              h-[calc(100%-38px)]
               min-h-0
-              min-w-0
               flex
               flex-col
               font-mono
@@ -786,15 +897,16 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
               md:text-[13px]
               leading-relaxed
               text-teal-300
-              p-3
-              sm:p-4
+              p-2
+              sm:p-3
               overflow-hidden
             "
           >
-            {/* TERMINAL INTRO */}
+
+            {/* STATUS */}
             <div
               className="
-                mb-3
+                mb-2
                 shrink-0
                 flex
                 items-center
@@ -804,20 +916,22 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
                 text-slate-400
               "
             >
+
               <span className="text-teal-400">
                 $
               </span>
 
               <span>
-                wscode --initialize-system
+                wscode --generate-continuous-code
               </span>
 
               <span className="animate-pulse text-teal-300">
                 _
               </span>
+
             </div>
 
-            {/* CODE */}
+            {/* CÓDIGO */}
             <div
               className="
                 flex-1
@@ -831,44 +945,52 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
                 sm:p-3
               "
             >
+
               <div className="space-y-0.5">
-                {displayedLines.map((line, index) => (
-                  <div
-                    key={`${index}-${line}`}
-                    className="
-                      flex
-                      min-w-0
-                      text-white/85
-                    "
-                  >
-                    <span
-                      className="
-                        mr-2
-                        w-5
-                        shrink-0
-                        select-none
-                        text-right
-                        text-slate-500/70
-                      "
-                    >
-                      {index + 1}
-                    </span>
 
-                    <span
+                {displayedLines.map(
+                  (line, index) => (
+                    <div
+                      key={`${index}-${line}`}
                       className="
+                        flex
                         min-w-0
-                        whitespace-pre
-                        overflow-hidden
-                        text-ellipsis
+                        text-white/85
                       "
                     >
-                      {line || ' '}
-                    </span>
-                  </div>
-                ))}
 
+                      <span
+                        className="
+                          mr-2
+                          w-5
+                          shrink-0
+                          select-none
+                          text-right
+                          text-slate-500/70
+                        "
+                      >
+                        {index + 1}
+                      </span>
+
+                      <span
+                        className="
+                          min-w-0
+                          whitespace-pre
+                          overflow-hidden
+                          text-ellipsis
+                        "
+                      >
+                        {line || " "}
+                      </span>
+
+                    </div>
+                  )
+                )}
+
+                {/* LINHA ATUAL */}
                 {currentLineIndex <
-                  codeTemplates[currentTechIndex].lines.length && (
+                  codeTemplates[currentTechIndex]
+                    .lines.length && (
                   <div
                     className="
                       flex
@@ -876,6 +998,7 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
                       text-teal-100
                     "
                   >
+
                     <span
                       className="
                         mr-2
@@ -898,108 +1021,25 @@ const CodeDashboard: React.FC<CodeDashboardProps> = ({
                       "
                     >
                       {currentText}
+
                       <span className="animate-pulse">
                         █
                       </span>
                     </span>
+
                   </div>
                 )}
+
               </div>
+
             </div>
+
           </div>
 
-          {/* TERMINAL FOOTER */}
-          <div
-            className="
-              shrink-0
-              flex
-              flex-col
-              sm:flex-row
-              sm:items-center
-              sm:justify-between
-              gap-1.5
-              border-t
-              border-teal-400/10
-              bg-slate-700/20
-              px-3
-              py-2
-              sm:px-4
-            "
-          >
-            <span
-              className="
-                text-[8px]
-                sm:text-[9px]
-                font-mono
-                text-slate-400
-              "
-            >
-              WSCODE INTELLIGENCE
-            </span>
-
-            <div className="flex items-center gap-2">
-              <span
-                className="
-                  h-1.5
-                  w-1.5
-                  rounded-full
-                  bg-emerald-400
-                  animate-pulse
-                "
-              />
-
-              <span
-                className="
-                  text-[8px]
-                  sm:text-[9px]
-                  font-mono
-                  text-emerald-300/80
-                "
-              >
-                SYSTEM READY
-              </span>
-            </div>
-          </div>
         </section>
 
-        {/* MOBILE STATUS */}
-        <div
-          className="
-            mt-3
-            flex
-            sm:hidden
-            items-center
-            justify-between
-            rounded-lg
-            border border-teal-400/15
-            bg-slate-700/20
-            px-3
-            py-2
-          "
-        >
-          <span
-            className="
-              text-[8px]
-              font-bold
-              tracking-widest
-              text-slate-400
-            "
-          >
-            MODULE
-          </span>
+      </main>
 
-          <span
-            className="
-              text-[9px]
-              font-mono
-              font-bold
-              text-teal-300
-            "
-          >
-            {moduloAtivo.toUpperCase()}
-          </span>
-        </div>
-      </div>
     </div>
   );
 };
