@@ -1,10 +1,34 @@
+
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: Request) {
   try {
+    // =========================
+    // VERIFICAR API KEY
+    // =========================
+
+    const apiKey = process.env.RESEND_API_KEY;
+
+    if (!apiKey) {
+      console.error("RESEND_API_KEY não está configurada.");
+
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Serviço de email não configurado.",
+        },
+        { status: 500 }
+      );
+    }
+
+    // Inicializar Resend somente no servidor
+    const resend = new Resend(apiKey);
+
+    // =========================
+    // RECEBER DADOS
+    // =========================
+
     const body = await request.json();
 
     const {
@@ -29,7 +53,8 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Todos os campos obrigatórios devem ser preenchidos.",
+          message:
+            "Todos os campos obrigatórios devem ser preenchidos.",
         },
         { status: 400 }
       );
@@ -41,6 +66,7 @@ export async function POST(request: Request) {
 
     const { data, error } = await resend.emails.send({
       from: "WSCODE <onboarding@resend.dev>",
+
       to: ["govecesarpaulo@gmail.com"],
 
       subject: `Novo contacto WSCODE — ${assunto}`,
@@ -147,6 +173,10 @@ export async function POST(request: Request) {
       `,
     });
 
+    // =========================
+    // ERRO RESEND
+    // =========================
+
     if (error) {
       console.error("Erro Resend:", error);
 
@@ -158,6 +188,10 @@ export async function POST(request: Request) {
         { status: 500 }
       );
     }
+
+    // =========================
+    // SUCESSO
+    // =========================
 
     return NextResponse.json({
       success: true,
@@ -190,3 +224,4 @@ function escapeHtml(value: string) {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
 }
+
