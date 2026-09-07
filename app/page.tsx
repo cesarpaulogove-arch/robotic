@@ -96,37 +96,49 @@ export default function Home() {
           <section className="w-full flex flex-col items-center text-center pt-0 pb-3 shrink-0">
 
             {/* WS + AI + CODE */}
-            <div className="relative flex items-center justify-center">
+            <div className="relative flex items-center justify-center gap-3">
 
-              {/* WS */}
-              <span className="text-[60px] sm:text-[68px] font-black tracking-[-0.08em] leading-none bg-gradient-to-r from-[#00bfff] via-[#00f2fe] to-[#4facfe] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(0,191,255,0.25)]">
-                WS
-              </span>
-
-              {/* AI + CODE */}
-              <div className="flex flex-col items-start ml-1">
-
-                {/* AI */}
-                <div className="self-start ml-1 bg-[#012246] border border-cyan-400 rounded-full px-1.5 py-[1px] shadow-[0_0_8px_rgba(34,211,238,0.5)]">
-                  <span className="text-[7px] font-black tracking-widest text-cyan-300 leading-none">
-                    AI
-                  </span>
+              <div className="flex items-center justify-center">
+                <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2 border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.35)]">
+                  <img
+                    src="/estudante.png"
+                    alt="Estudante de robótica"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
+              </div>
 
-                {/* CODE */}
-                <span className="text-[27px] sm:text-[31px] font-black tracking-[0.13em] text-white leading-none">
-                  CODE
+              {/* WS AI CODE */}
+              <div className="relative flex items-center justify-center">
+
+                {/* WS */}
+                <span className="text-[60px] sm:text-[68px] font-black tracking-[-0.08em] leading-none bg-gradient-to-r from-[#00bfff] via-[#00f2fe] to-[#4facfe] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(0,191,255,0.25)]">
+                  WS
                 </span>
 
+                {/* AI + CODE */}
+                <div className="flex flex-col items-start ml-1">
+
+                  {/* AI */}
+                  <div className="self-start ml-1 bg-[#012246] border border-cyan-400 rounded-full px-1.5 py-[1px] shadow-[0_0_8px_rgba(34,211,238,0.5)]">
+                    <span className="text-[7px] font-black tracking-widest text-cyan-300 leading-none">
+                      AI
+                    </span>
+                  </div>
+
+                  {/* CODE */}
+                  <span className="text-[27px] sm:text-[31px] font-black tracking-[0.13em] text-white leading-none">
+                    CODE
+                  </span>
+
+                </div>
+
               </div>
+
             </div>
 
             {/* SLOGAN */}
             <p className="text-[10px] sm:text-[11px] font-black text-cyan-400 uppercase tracking-wider leading-tight">
-              Soluções Integradas:
-            </p>
-
-            <p className="text-xs sm:text-sm text-gray-200 mt-1 leading-tight">
               Do Circuito à Inteligência Artificial
             </p>
 
@@ -282,7 +294,7 @@ export default function Home() {
               <ArrowRight className="w-5 h-5 shrink-0 stroke-[2.5]" />
 
             </Link>
-                   <button
+            <button
               type="button"
               onClick={() => setContactOpen(true)}
               className="w-full bg-[#001833] hover:bg-[#00224a] text-cyan-400 border border-cyan-500/40 font-bold py-3 px-4 flex items-center justify-center gap-2.5 rounded-xl active:scale-[0.97] transition-all"
@@ -453,7 +465,7 @@ export default function Home() {
             {/* =================================================
                 CONTACTO
             ================================================= */}
-     
+
 
 
             {/* =================================================
