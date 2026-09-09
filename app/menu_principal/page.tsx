@@ -1,7 +1,8 @@
-
 'use client';
-import React, { useState } from 'react';
-import CodeDashboard from '@/components/CodeDashboard';
+
+import React from 'react';
+
+
 import ComponenteRobo from '@/components/ComponenteRobo';
 import ComponenteSemaforo from '@/components/ComponenteSemaforo';
 import ComponenteParque from '@/components/ComponenteParque';
@@ -9,35 +10,34 @@ import ComponenteCircuitos from '@/components/ComponenteCircuitos';
 import { ComponenteIrrigacao } from '@/components/ComponenteIrrigacao';
 import { ComponenteElectricidade } from '@/components/ComponenteElectricidade';
 import { ComponenteJogos } from '@/components/ComponenteJogos';
-
-export type TelaAtiva =
-  | 'robo'
-  | 'semaforo'
-  | 'parque'
-  | 'circuitos'
-  | 'irrigacao'
-  | 'jogos'
-  | 'electricidade';
+import CodeDashboard from '@/components/CodeDashboard';
 
 export default function Page(): React.JSX.Element {
-  const [moduloAtivo, setModuloAtivo] =
-    useState<TelaAtiva>('semaforo');
-
   return (
-    <main className="min-h-screen w-full bg-[#081b29] text-white font-sans antialiased overflow-x-hidden">
+    <main
+      className="
+        min-h-screen
+        w-full
+        bg-[#081b29]
+        text-white
+        font-sans
+        antialiased
+        overflow-x-hidden
+      "
+    >
 
-      {/* SISTEMA PRINCIPAL */}
+      {/* ===================================================== */}
+      {/* PAINEL PRINCIPAL */}
+      {/* ===================================================== */}
+
       <div
         className="
           w-full
           min-h-screen
-          lg:min-h-0
-          lg:h-[85vh]
-          lg:max-h-[600px]
-          lg:max-w-6xl
+          lg:max-w-7xl
           lg:mx-auto
-          lg:my-auto
-          lg:rounded-xl
+          lg:my-6
+          lg:rounded-2xl
           lg:border-2
           lg:border-teal-400/60
           bg-[#0c2438]/50
@@ -45,79 +45,154 @@ export default function Page(): React.JSX.Element {
           shadow-2xl
           shadow-teal-950/80
           overflow-hidden
-
-          flex
-          flex-col
-          lg:grid
-          lg:grid-cols-2
         "
       >
 
-        {/* ===================================================== */}
-        {/* PAINEL DE NAVEGAÇÃO / CÓDIGO                         */}
-        {/* ===================================================== */}
+        {/* ================================================= */}
+        {/* DASHBOARD / NAVEGAÇÃO                             */}
+        {/* ================================================= */}
 
         <section
           className="
             w-full
-            shrink-0
-            lg:h-full
-            lg:border-r-2
-            lg:border-teal-400/60
+            border-b-2
+            border-teal-400/40
             overflow-hidden
           "
         >
-          <CodeDashboard
-            setModuloAtivo={setModuloAtivo}
-            moduloAtivo={moduloAtivo}
-          />
+          <CodeDashboard />
         </section>
 
 
-        {/* ===================================================== */}
-        {/* ÁREA DO MÓDULO                                         */}
-        {/* ===================================================== */}
+        {/* ================================================= */}
+        {/* TODOS OS PROJECTOS                                */}
+        {/* ================================================= */}
 
         <section
           className="
-            relative
             w-full
-            flex-1
-            min-h-[calc(100vh-180px)]
-            lg:min-h-0
-            overflow-hidden
-            flex
-            flex-col
+            p-3
+            sm:p-5
+            lg:p-6
           "
         >
 
-          {moduloAtivo === 'robo' && (
-            <ComponenteRobo />
-          )}
+          <div
+            className="
+              grid
+              grid-cols-1
+              md:grid-cols-2
+              gap-4
+              lg:gap-6
+            "
+          >
 
-          {moduloAtivo === 'semaforo' && (
-            <ComponenteSemaforo />
-          )}
+            {/* ROBÔ */}
+            <article
+              className="
+                w-full
+                overflow-hidden
+                rounded-2xl
+                border
+                border-teal-400/30
+                bg-[#081b29]/70
+              "
+            >
+              <ComponenteRobo />
+            </article>
 
-          {moduloAtivo === 'parque' && (
-            <ComponenteParque />
-          )}
 
-          {moduloAtivo === 'circuitos' && (
-            <ComponenteCircuitos />
-          )}
+            {/* SEMÁFORO */}
+            <article
+              className="
+                w-full
+                overflow-hidden
+                rounded-2xl
+                border
+                border-teal-400/30
+                bg-[#081b29]/70
+              "
+            >
+              <ComponenteSemaforo />
+            </article>
 
-          {moduloAtivo === 'irrigacao' && (
-            <ComponenteIrrigacao />
-          )}
 
-          {moduloAtivo === 'electricidade' && (
-            <ComponenteElectricidade />
-          )}
+            {/* PARQUE */}
+            <article
+              className="
+                w-full
+                overflow-hidden
+                rounded-2xl
+                border
+                border-teal-400/30
+                bg-[#081b29]/70
+              "
+            >
+              <ComponenteParque />
+            </article>
 
-          {moduloAtivo === 'jogos' && (
-            <ComponenteJogos />
-          )}
+
+            {/* CIRCUITOS */}
+            <article
+              className="
+                w-full
+                overflow-hidden
+                rounded-2xl
+                border
+                border-teal-400/30
+                bg-[#081b29]/70
+              "
+            >
+              <ComponenteCircuitos />
+            </article>
+
+
+            {/* IRRIGAÇÃO */}
+            <article
+              className="
+                w-full
+                overflow-hidden
+                rounded-2xl
+                border
+                border-teal-400/30
+                bg-[#081b29]/70
+              "
+            >
+              <ComponenteIrrigacao />
+            </article>
+
+
+            {/* JOGOS */}
+            <article
+              className="
+                w-full
+                overflow-hidden
+                rounded-2xl
+                border
+                border-teal-400/30
+                bg-[#081b29]/70
+              "
+            >
+              <ComponenteJogos />
+            </article>
+
+
+            {/* ELECTRICIDADE */}
+            <article
+              className="
+                w-full
+                overflow-hidden
+                rounded-2xl
+                border
+                border-teal-400/30
+                bg-[#081b29]/70
+                md:col-span-2
+              "
+            >
+              <ComponenteElectricidade />
+            </article>
+
+          </div>
 
         </section>
 
@@ -125,4 +200,3 @@ export default function Page(): React.JSX.Element {
     </main>
   );
 }
-

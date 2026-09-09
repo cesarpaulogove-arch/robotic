@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -13,18 +12,20 @@ import {
   Phone,
   MessageCircle,
   MapPin,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
-
 
 import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   const [contactOpen, setContactOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
 
   return (
     <main className="min-h-[100dvh] bg-black px-3 py-3 sm:px-4 sm:py-4 font-sans overflow-x-hidden">
-
+      
       {/* =====================================================
           ANIMAÇÃO DOS PONTOS CIRCULARES NAS BORDAS
       ===================================================== */}
@@ -77,6 +78,22 @@ export default function Home() {
 
         .border-travel-dot.second {
           animation-delay: -2.5s;
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(-8px);
+          }
+
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .about-content {
+          animation: fadeIn 0.25s ease-out;
         }
       `}</style>
 
@@ -294,6 +311,11 @@ export default function Home() {
               <ArrowRight className="w-5 h-5 shrink-0 stroke-[2.5]" />
 
             </Link>
+
+
+            {/* =================================================
+                ENTRAR EM CONTACTO
+            ================================================= */}
             <button
               type="button"
               onClick={() => setContactOpen(true)}
@@ -311,8 +333,9 @@ export default function Home() {
 
             {/* =================================================
                 SOBRE NÓS
+                FECHADO POR PADRÃO
             ================================================= */}
-            <section className="relative overflow-hidden bg-gradient-to-b from-[#032247] to-[#011630] border border-[#1361ab] rounded-xl p-4 shadow-md">
+            <section className="relative overflow-hidden bg-gradient-to-b from-[#032247] to-[#011630] border border-[#1361ab] rounded-xl shadow-md">
 
               {/* PONTOS CIRCULARES */}
               <span
@@ -325,147 +348,193 @@ export default function Home() {
                 aria-hidden="true"
               />
 
-
               <div className="relative z-10">
 
                 {/* =================================================
-                    PERFIL
+                    BOTÃO PARA ABRIR / FECHAR
                 ================================================= */}
-                <div className="flex flex-col items-start mb-4">
+                <button
+                  type="button"
+                  onClick={() => setAboutOpen((prev) => !prev)}
+                  className="w-full p-4 flex items-center justify-between gap-3 text-left hover:bg-cyan-500/[0.03] active:scale-[0.99] transition-all"
+                  aria-expanded={aboutOpen}
+                >
 
-                  {/* FOTO */}
-                  <div className="relative">
+                  <div className="flex items-center gap-3 min-w-0">
 
-                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.35)] bg-[#011a32]">
-
-                      <img
-                        src="/cesar.jpeg"
-                        alt="Cesar Paulo Gove"
-                        className="w-full h-full object-cover"
-                      />
-
+                    {/* ÍCONE */}
+                    <div className="w-10 h-10 shrink-0 rounded-lg bg-[#042e5c] border border-cyan-500/30 flex items-center justify-center">
+                      <Lightbulb className="w-5 h-5 text-cyan-400" />
                     </div>
 
-                    {/* PONTO DE STATUS */}
-                    <span className="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-cyan-400 border-2 border-[#032247] shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
+                    {/* TEXTO */}
+                    <div className="min-w-0">
 
-                  </div>
+                      <h3 className="text-sm sm:text-base font-black tracking-wide text-cyan-400 uppercase leading-tight">
+                        Sobre Nós
+                      </h3>
 
-
-                  {/* NOME */}
-                  <h2 className="mt-2 text-base sm:text-lg font-black text-white tracking-wide">
-                    César Paulo Gove
-                  </h2>
-
-                  {/* FUNÇÃO */}
-                  <p className="text-[10px] sm:text-xs font-bold text-cyan-400 uppercase tracking-wider mt-0.5">
-                    Tecnologia • Eletrónica • Programação
-                  </p>
-
-                </div>
-
-
-                {/* TÍTULO */}
-                <h3 className="text-sm sm:text-base font-black tracking-wide text-cyan-400 uppercase mb-2 leading-tight">
-                  Sobre Nós
-                </h3>
-
-
-                {/* =================================================
-                    DESCRIÇÃO
-                ================================================= */}
-                <p className="text-[11px] sm:text-xs font-medium text-gray-300 leading-relaxed">
-
-                  Somos uma iniciativa tecnológica independente, formada
-                  por profissionais freelancers apaixonados por eletrónica,
-                  programação, automação e desenvolvimento de soluções
-                  inteligentes.
-
-                  <br />
-                  <br />
-
-                  Atuamos desde o desenho e montagem de circuitos
-                  eletrónicos, soldagem e montagem de protótipos físicos,
-                  até ao desenvolvimento de firmware para microcontroladores
-                  e sistemas embarcados.
-
-                  <br />
-                  <br />
-
-                  Trabalhamos com plataformas como Arduino, ESP8266, ESP32
-                  e outras famílias de ESP, além de circuitos integrados e
-                  diferentes componentes eletrónicos, desenvolvendo soluções
-                  personalizadas de acordo com cada projeto.
-
-                  <br />
-                  <br />
-
-                  Também desenvolvemos aplicações web integradas a
-                  microcontroladores, permitindo criar sistemas capazes de
-                  comunicar, monitorizar e controlar dispositivos
-                  remotamente.
-
-                  <br />
-                  <br />
-
-                  Atualmente, temos trabalhado principalmente com estudantes,
-                  apoiando projetos académicos, protótipos, trabalhos de
-                  conclusão e experiências práticas na área de eletrónica,
-                  programação e tecnologia.
-
-                  <br />
-                  <br />
-
-                  A nossa proposta é aproximar a teoria da prática, ajudando
-                  a transformar uma ideia, um circuito ou um código em um
-                  protótipo funcional e uma solução real.
-
-                </p>
-
-
-                {/* =================================================
-                    LOCALIZAÇÃO
-                ================================================= */}
-                ```tsx
-                {/* =================================================
-    LOCALIZAÇÃO
-================================================= */}
-                <div className="mt-4 rounded-xl border border-cyan-500/20 bg-[#011a32] px-3 py-2.5">
-
-                  <div className="flex items-center gap-2">
-
-                    {/* ÍCONE DE LOCALIZAÇÃO */}
-                    <div className="shrink-0 w-8 h-8 rounded-lg bg-[#042e5c] border border-cyan-500/30 flex items-center justify-center">
-                      <MapPin className="w-4 h-4 text-cyan-400" />
-                    </div>
-
-                    {/* INFORMAÇÃO */}
-                    <div className="min-w-0 text-left">
-
-                      <span className="block text-[9px] sm:text-[10px] font-black text-cyan-400 uppercase tracking-wider leading-tight">
-                        Localização
-                      </span>
-
-                      <span className="block text-[10px] sm:text-xs font-medium text-gray-300 leading-tight mt-0.5">
-                        Matola, Malhampsene — Q2, Rua de Quartel
-                      </span>
+                      <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">
+                        {aboutOpen
+                          ? "Clique para ocultar as informações"
+                          : "Clique para conhecer-nos"}
+                      </p>
 
                     </div>
 
                   </div>
 
-                </div>
+                  {/* SETA */}
+                  <div className="shrink-0 w-9 h-9 rounded-lg bg-[#011a32] border border-cyan-500/30 flex items-center justify-center transition-transform">
 
+                    {aboutOpen ? (
+                      <ChevronUp className="w-5 h-5 text-cyan-400" />
+                    ) : (
+                      <ChevronDown className="w-5 h-5 text-cyan-400" />
+                    )}
+
+                  </div>
+
+                </button>
+
+
+                {/* =================================================
+                    CONTEÚDO OCULTO
+                    SÓ APARECE APÓS O CLIQUE
+                ================================================= */}
+                {aboutOpen && (
+                  <div className="about-content px-4 pb-4">
+
+                    {/* LINHA SEPARADORA */}
+                    <div className="w-full h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent mb-4" />
+
+
+                    {/* =================================================
+                        PERFIL
+                    ================================================= */}
+                    <div className="flex flex-col items-start mb-4">
+
+                      {/* FOTO */}
+                      <div className="relative">
+
+                        <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.35)] bg-[#011a32]">
+
+                          <img
+                            src="/cesar.jpeg"
+                            alt="Cesar Paulo Gove"
+                            className="w-full h-full object-cover"
+                          />
+
+                        </div>
+
+                        {/* PONTO DE STATUS */}
+                        <span className="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-cyan-400 border-2 border-[#032247] shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
+
+                      </div>
+
+
+                      {/* NOME */}
+                      <h2 className="mt-2 text-base sm:text-lg font-black text-white tracking-wide">
+                        César Paulo Gove
+                      </h2>
+
+
+                      {/* FUNÇÃO */}
+                      <p className="text-[10px] sm:text-xs font-bold text-cyan-400 uppercase tracking-wider mt-0.5">
+                        Tecnologia • Eletrónica • Programação
+                      </p>
+
+                    </div>
+
+
+                    {/* =================================================
+                        DESCRIÇÃO
+                    ================================================= */}
+                    <div className="text-[11px] sm:text-xs font-medium text-gray-300 leading-relaxed">
+
+                      <p>
+                        Somos uma iniciativa tecnológica independente,
+                        formada por profissionais freelancers apaixonados
+                        por eletrónica, programação, automação e
+                        desenvolvimento de soluções inteligentes.
+                      </p>
+
+                      <p className="mt-3">
+                        Atuamos desde o desenho e montagem de circuitos
+                        eletrónicos, soldagem e montagem de protótipos
+                        físicos, até ao desenvolvimento de firmware para
+                        microcontroladores e sistemas embarcados.
+                      </p>
+
+                      <p className="mt-3">
+                        Trabalhamos com plataformas como Arduino, ESP8266,
+                        ESP32 e outras famílias de ESP, além de circuitos
+                        integrados e diferentes componentes eletrónicos,
+                        desenvolvendo soluções personalizadas de acordo
+                        com cada projeto.
+                      </p>
+
+                      <p className="mt-3">
+                        Também desenvolvemos aplicações web integradas a
+                        microcontroladores, permitindo criar sistemas
+                        capazes de comunicar, monitorizar e controlar
+                        dispositivos remotamente.
+                      </p>
+
+                      <p className="mt-3">
+                        Atualmente, temos trabalhado principalmente com
+                        estudantes, apoiando projetos académicos,
+                        protótipos, trabalhos de conclusão e experiências
+                        práticas na área de eletrónica, programação e
+                        tecnologia.
+                      </p>
+
+                      <p className="mt-3">
+                        A nossa proposta é aproximar a teoria da prática,
+                        ajudando a transformar uma ideia, um circuito ou
+                        um código em um protótipo funcional e uma solução
+                        real.
+                      </p>
+
+                    </div>
+
+
+                    {/* =================================================
+                        LOCALIZAÇÃO
+                    ================================================= */}
+                    <div className="mt-4 rounded-xl border border-cyan-500/20 bg-[#011a32] px-3 py-2.5">
+
+                      <div className="flex items-center gap-2">
+
+                        {/* ÍCONE DE LOCALIZAÇÃO */}
+                        <div className="shrink-0 w-8 h-8 rounded-lg bg-[#042e5c] border border-cyan-500/30 flex items-center justify-center">
+                          <MapPin className="w-4 h-4 text-cyan-400" />
+                        </div>
+
+
+                        {/* INFORMAÇÃO */}
+                        <div className="min-w-0 text-left">
+
+                          <span className="block text-[9px] sm:text-[10px] font-black text-cyan-400 uppercase tracking-wider leading-tight">
+                            Localização
+                          </span>
+
+                          <span className="block text-[10px] sm:text-xs font-medium text-gray-300 leading-tight mt-0.5">
+                            Matola, Malhampsene — Q2, Rua de Quartel
+                          </span>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+                )}
 
               </div>
 
             </section>
-
-
-            {/* =================================================
-                CONTACTO
-            ================================================= */}
-
 
 
             {/* =================================================
@@ -524,4 +593,3 @@ export default function Home() {
     </main>
   );
 }
-
